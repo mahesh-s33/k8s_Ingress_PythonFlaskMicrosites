@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    db: postgres
+  name: postgres
+spec:
+  containers:
+  - image: postgres
+    name: postgres
+    ports:
+    - containerPort: 5432
+    env:
+    - name: PGDATA
+      value: /var/lib/postgresql/data/pgdata
+    - name: POSTGRES_PASSWORD
+      value: secret
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /form
+        pathType: Prefix
+        backend:
+          service:
+            name: form
+            port:
+              number: 5001
+      - path: /users
+        pathType: Prefix
+        backend:
+          service:
+            name: users
+            port:
+              number: 5001
